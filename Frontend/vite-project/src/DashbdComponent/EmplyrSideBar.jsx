@@ -222,7 +222,7 @@ export default function EmployerSideBar() {
                     <div className="p-6 space-y-4">
                         {/* WhatsApp */}
                         <a
-                        href="https://wa.me/255712345678"
+                        href="https://wa.me/255755880249"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center gap-4 w-full p-4 bg-green-50 hover:bg-green-100 rounded-xl transition-all transform hover:scale-105 border border-green-200"
@@ -252,7 +252,7 @@ export default function EmployerSideBar() {
 
                         {/* Call */}
                         <a
-                        href="tel:+255712345678"
+                        href="tel:+255755880249"
                         className="flex items-center gap-4 w-full p-4 bg-amber-50 hover:bg-amber-100 rounded-xl transition-all transform hover:scale-105 border border-amber-200"
                         >
                         <div className="p-3 bg-amber-600 text-white rounded-full">
@@ -260,7 +260,7 @@ export default function EmployerSideBar() {
                         </div>
                         <div className="flex-1">
                             <p className="font-semibold text-gray-800">Call Support</p>
-                            <p className="text-sm text-gray-600">+255 712 345 678</p>
+                            <p className="text-sm text-gray-600">+255 755 880 249</p>
                         </div>
                         </a>
                     </div>
