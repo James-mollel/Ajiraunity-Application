@@ -67,9 +67,9 @@ CSRF_TRUSTED_ORIGINS = ["https://ajiraunity-backend.onrender.com"]
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 
-# AUTHENTICATION_BACKENDS = [
-#     'django.contrib.auth.backends.ModelBackend', # This is required for the Admin panel
-# ]
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend', # This is required for the Admin panel
+]
 
 #------------------------------
 
