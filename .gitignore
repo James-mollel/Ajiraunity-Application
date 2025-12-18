@@ -1,0 +1,15 @@
+# ===== Backend / Python =====
+myVen/
+Backend/__pycache__/
+Backend/*.pyc
+Backend/.env
+Backend/db.sqlite3
+
+# ===== Frontend / Node =====
+Frontend/vite-project/node_modules/
+Frontend/vite-project/dist/
+Frontend/vite-project/.env
+
+# ===== General =====
+*.log
+.DS_Store
