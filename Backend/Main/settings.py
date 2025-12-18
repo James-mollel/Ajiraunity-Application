@@ -34,7 +34,7 @@ DEBUG = os.environ.get("DEBUG", False) == "True"
 AUTH_USER_MODEL = "Users.CustomUserModel"
 
 # ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["https://ajiraunity-backend.onrender.com","https://ajiraunity-frontend.onrender.com"]
 
 
 # Application definition
@@ -61,15 +61,18 @@ CORS_ALLOWED_ORIGINS = config("CORS_ALLOWED_ORIGINS", cast =Csv())
 
 CORS_ALLOW_CREDENTIALS = True
 
-CSRF_TRUSTED_ORIGINS = ["https://ajiraunity-backend.onrender.com"]
 
-# Since you are using HTTPS on Render
+
+
+# Tell Django how to authenticate
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+# Fix for Render/HTTPS
+CSRF_TRUSTED_ORIGINS = ["https://ajiraunity-backend.onrender.com"]
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
-
-AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend', # This is required for the Admin panel
-]
 
 #------------------------------
 
