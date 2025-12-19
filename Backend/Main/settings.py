@@ -64,24 +64,9 @@ INSTALLED_APPS = [
 
 CORS_ALLOWED_ORIGINS = config("CORS_ALLOWED_ORIGINS", cast =Csv())
 
-
-SESSION_COOKIE_SAMESITE = "None"
-CSRF_COOKIE_SAMESITE = "None"
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-
-
 CORS_ALLOW_CREDENTIALS = True
 
 
-# CSRF_TRUSTED_ORIGINS = config(
-#     "CSRF_TRUSTED_ORIGINS",
-#     default="https://ajiraunity.co.tz", 
-#     cast=Csv()  # Important: split into list
-
-
-# CSRF_TRUSTED_ORIGINS=https://ajiraunity.co.tz,https://ajiraunity-frontend.onrender.com 
-# )
 
 
 
