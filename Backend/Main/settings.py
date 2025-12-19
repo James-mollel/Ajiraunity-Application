@@ -72,7 +72,7 @@ CORS_ALLOWED_ORIGINS =[
     "https://ajiraunity-frontend.onrender.com",
      ]
 
-
+CORS_ALLOW_CREDENTIALS = True
 
 
 # CSRF settings
