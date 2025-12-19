@@ -34,8 +34,11 @@ DEBUG = os.environ.get("DEBUG", False) == "True"
 AUTH_USER_MODEL = "Users.CustomUserModel"
 
 # ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ["*"]
-# ALLOWED_HOSTS = ["https://ajiraunity-backend.onrender.com","https://ajiraunity-frontend.onrender.com"]
+# ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["ajiraunity-backend.onrender.com",
+                 "ajiraunity-frontend.onrender.com",
+                 ".onrender.com",
+                 ]
 
 
 # Application definition
