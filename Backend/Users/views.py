@@ -76,7 +76,7 @@ class EmployerRegisterView(generics.CreateAPIView):
     permission_classes = [AllowAny]
     serializer_class = RegisterSerializer
 
-    @ratelimit(limit=10, window=600, block_time=900)
+    @ratelimit(limit=10, window=600, block_time=600)
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data = request.data)
         serializer.is_valid(raise_exception = True)
@@ -91,7 +91,7 @@ class WorkerRegisterView(generics.CreateAPIView):
     serializer_class = RegisterSerializer
     permission_classes = [AllowAny]
 
-    @ratelimit(limit=10, window=600, block_time=900)
+    @ratelimit(limit=10, window=600, block_time=600)
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data = request.data)
         serializer.is_valid(raise_exception = True)
@@ -105,7 +105,7 @@ class WorkerRegisterView(generics.CreateAPIView):
 class VerifyEmailView(APIView):
     permission_classes = [AllowAny]
 
-    @ratelimit(limit=10, window=600, block_time=900)
+    @ratelimit(limit=10, window=600, block_time=600)
     def get(self, request, uidb64, token):
         try:
             uid = urlsafe_base64_decode(uidb64).decode()
@@ -131,7 +131,7 @@ class VerifyEmailView(APIView):
 class LoginView(APIView):
     permission_classes = [AllowAny]
 
-    @ratelimit(limit=10, window=600, block_time=900)
+    @ratelimit(limit=10, window=600, block_time=600)
     def post(self, request):
         email = request.data.get("email")
         password = request.data.get("password")
