@@ -17,7 +17,7 @@ from rest_framework_simplejwt.exceptions import TokenError, InvalidToken
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.http import JsonResponse
 from rest_framework.throttling import UserRateThrottle
-from .retelimit import ratelimit
+# from .retelimit import ratelimit
 from django.db import transaction
 import datetime
 
@@ -76,7 +76,7 @@ class EmployerRegisterView(generics.CreateAPIView):
     permission_classes = [AllowAny]
     serializer_class = RegisterSerializer
 
-    @ratelimit(limit=10, window=600, block_time=900)
+    # @ratelimit(limit=10, window=600, block_time=900)
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data = request.data)
         serializer.is_valid(raise_exception = True)
@@ -91,7 +91,7 @@ class WorkerRegisterView(generics.CreateAPIView):
     serializer_class = RegisterSerializer
     permission_classes = [AllowAny]
 
-    @ratelimit(limit=10, window=600, block_time=900)
+    # @ratelimit(limit=10, window=600, block_time=900)
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data = request.data)
         serializer.is_valid(raise_exception = True)
@@ -105,7 +105,7 @@ class WorkerRegisterView(generics.CreateAPIView):
 class VerifyEmailView(APIView):
     permission_classes = [AllowAny]
 
-    @ratelimit(limit=10, window=600, block_time=900)
+    # @ratelimit(limit=10, window=600, block_time=900)
     def get(self, request, uidb64, token):
         try:
             uid = urlsafe_base64_decode(uidb64).decode()
@@ -131,7 +131,7 @@ class VerifyEmailView(APIView):
 class LoginView(APIView):
     permission_classes = [AllowAny]
 
-    @ratelimit(limit=10, window=600, block_time=900)
+    # @ratelimit(limit=10, window=600, block_time=900)
     def post(self, request):
         email = request.data.get("email")
         password = request.data.get("password")
@@ -225,7 +225,7 @@ class PermitUserView(APIView):
 class PasswordResetView(APIView):
     permission_classes = [AllowAny]
     
-    @ratelimit(limit=10, window=300, block_time=600)
+    # @ratelimit(limit=10, window=300, block_time=600)
     def post(self, request):
         serializer = PasswordResetSerializer(data = request.data)
         if serializer.is_valid():
@@ -243,7 +243,7 @@ class PasswordResetView(APIView):
 class PasswordConfirmView(APIView):
     permission_classes = [AllowAny]
 
-    @ratelimit(limit=10, window=300, block_time=600)
+    # @ratelimit(limit=10, window=300, block_time=600)
     def post(self, request, uidb64, token):
         serializer = PasswordConfirmSerializer(data = request.data)
         if serializer.is_valid():
