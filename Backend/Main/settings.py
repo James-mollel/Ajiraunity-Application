@@ -63,19 +63,14 @@ INSTALLED_APPS = [
 ]
 
 
-CORS_ALLOW_CREDENTIALS = True
-
 
 
 # CORS settings
-# CORS_ALLOWED_ORIGINS = config(
-#     "CORS_ALLOWED_ORIGINS",
-#     default="https://ajiraunity.co.tz,https://ajiraunity-frontend.onrender.com",
-#     cast=Csv()
-# )
+CORS_ALLOWED_ORIGINS =[ 
+    "https://ajiraunity.co.tz",
+    "https://www.ajiraunity.co.tz",
+     ]
 
-
-CORS_ALLOWED_ORIGINS = True
 
 
 
