@@ -71,6 +71,9 @@ CORS_ALLOW_CREDENTIALS = True
 #     "CSRF_TRUSTED_ORIGINS",
 #     default="https://ajiraunity.co.tz", 
 #     cast=Csv()  # Important: split into list
+
+
+# CSRF_TRUSTED_ORIGINS=https://ajiraunity.co.tz,https://ajiraunity-frontend.onrender.com 
 # )
 
 
