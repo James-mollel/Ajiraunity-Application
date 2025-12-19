@@ -68,7 +68,7 @@ INSTALLED_APPS = [
 # CORS settings
 CORS_ALLOWED_ORIGINS =[ 
     "https://ajiraunity.co.tz",
-    "www.ajiraunity.co.tz",
+    "https://www.ajiraunity.co.tz",
     "https://ajiraunity-frontend.onrender.com",
      ]
 
