@@ -21,12 +21,23 @@ export default function VerifyEmailPage(){
 
             }
         }catch(err){
-            if (err.response){
-                toast.error(err.response.data.detail);
-            }else{
-                toast.error("Network Error. Please try again later.");
-               
-            }
+             if (err.response){
+                    const data = err.response.data;
+                    
+                    if (data.detail){
+                        toast.error(data.detail);
+
+                    } else if(typeof data === 'object'){
+                        Object.entries(data).forEach(([key, value])=>{
+                            const message = Array.isArray(value)? value.join(", ") : value;
+                            toast.error(message)
+                        });
+                    }else{
+                        toast.error("Unexpected error occur, Please try again later");
+                    }
+                }else{
+                    toast.error("Network Error!.")
+                }
 
             setTimeout(()=>{
                 navigate("/user-login");
