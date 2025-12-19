@@ -7,4 +7,27 @@
     <priority>1.0</priority>
   </url>
 
+   <url>
+    <loc>https://ajiraunity.co.tz/all-jobs/</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+    <url>
+    <loc>https://ajiraunity.co.tz/about-us/</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://ajiraunity.co.tz/user-login/</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>
+
+
+
+
+ 
