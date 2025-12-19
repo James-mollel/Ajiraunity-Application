@@ -66,7 +66,12 @@ CORS_ALLOWED_ORIGINS = config("CORS_ALLOWED_ORIGINS", cast =Csv())
 
 CORS_ALLOW_CREDENTIALS = True
 
-CSRF_TRUSTED_ORIGINS = config("CSRF_TRUSTED_ORIGINS")
+
+CSRF_TRUSTED_ORIGINS = config(
+    "CSRF_TRUSTED_ORIGINS",
+    default="https://ajiraunity.co.tz", 
+    cast=Csv()  # Important: split into list
+)
 
 
 
