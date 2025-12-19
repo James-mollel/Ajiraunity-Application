@@ -36,6 +36,7 @@ AUTH_USER_MODEL = "Users.CustomUserModel"
 # ALLOWED_HOSTS = []
 # ALLOWED_HOSTS = ["*"]
 ALLOWED_HOSTS = ["ajiraunity-backend.onrender.com",
+                 "ajiraunity.co.tz",
                  "ajiraunity-frontend.onrender.com",
                  ".onrender.com",
                  ]
