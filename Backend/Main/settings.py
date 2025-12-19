@@ -62,9 +62,32 @@ INSTALLED_APPS = [
     
 ]
 
-CORS_ALLOWED_ORIGINS = config("CORS_ALLOWED_ORIGINS", cast =Csv())
 
 CORS_ALLOW_CREDENTIALS = True
+
+
+
+# CORS settings
+CORS_ALLOWED_ORIGINS = config(
+    "CORS_ALLOWED_ORIGINS",
+    default="https://ajiraunity.co.tz,https://ajiraunity-frontend.onrender.com",
+    cast=Csv()
+)
+
+
+# CSRF settings
+CSRF_TRUSTED_ORIGINS = config(
+    "CSRF_TRUSTED_ORIGINS",
+    default="https://ajiraunity.co.tz,https://ajiraunity-frontend.onrender.com",
+    cast=Csv()
+)
+
+# Session and CSRF cookies for cross-origin
+SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_SAMESITE = 'None'
+CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_SAMESITE = 'None'
+
 
 
 
@@ -75,12 +98,7 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
 
-# Fix for Render/HTTPS
-# CSRF_TRUSTED_ORIGINS = ["https://ajiraunity-backend.onrender.com"]
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
 
-#------------------------------
 
 
 SIMPLE_JWT={
