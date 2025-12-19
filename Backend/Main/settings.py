@@ -34,7 +34,8 @@ DEBUG = os.environ.get("DEBUG", False) == "True"
 AUTH_USER_MODEL = "Users.CustomUserModel"
 
 # ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ["https://ajiraunity-backend.onrender.com","https://ajiraunity-frontend.onrender.com"]
+ALLOWED_HOSTS = ["*"]
+# ALLOWED_HOSTS = ["https://ajiraunity-backend.onrender.com","https://ajiraunity-frontend.onrender.com"]
 
 
 # Application definition
@@ -70,7 +71,7 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 # Fix for Render/HTTPS
-CSRF_TRUSTED_ORIGINS = ["https://ajiraunity-backend.onrender.com"]
+# CSRF_TRUSTED_ORIGINS = ["https://ajiraunity-backend.onrender.com"]
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 
