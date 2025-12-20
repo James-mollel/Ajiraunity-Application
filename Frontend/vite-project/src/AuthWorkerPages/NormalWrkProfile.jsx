@@ -14,7 +14,7 @@ export default function NormalWorkerProfile() {
 
     return(
         <div className="container mx-auto px-2">
-            <div className="flex flex-row flex-nowrap shadow-lg rounded-md sticky top-0 z-50 bg-white/50 backdrop-blur-md overflow-x-auto py-4">
+            <div className="flex flex-row flex-nowrap shadow-lg rounded-md sticky top-0 bg-white/50 backdrop-blur-md overflow-x-auto py-4">
                 {tabs.map((tab)=>(
                     <button key={tab.id} onClick={()=> setActiveTab(tab.id)}
                     className={`pb-3 px-2 text-sm font-extrabold relative flex-shrink-0 mx-1
