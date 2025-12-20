@@ -410,6 +410,7 @@ class WorkerProfileSerializer(serializers.ModelSerializer):
 #==============SHORT EMPLOYER PROFILE =============
 class EmployerProfileSerializer(serializers.ModelSerializer):
     user = serializers.StringRelatedField(read_only = True)
+    avatar = serializers.SerializerMethodField()
 
     class Meta:
         model = UsersProfile
@@ -417,6 +418,11 @@ class EmployerProfileSerializer(serializers.ModelSerializer):
                   "phone_number","phone_verified")
         
         read_only_fields = ("id","user","phone_verified")
+
+    def get_avatar(self, obj):
+        if obj.avatar:
+            return obj.avatar.url
+        return None
 
     def validate_avatar(self, value):
         if value is None:
