@@ -22,7 +22,7 @@ export default function ProfessionalWorkerProfile() {
 
     return(
         <div className="container mx-auto px-2">
-            <div className="flex flex-row flex-nowrap overflow-x-auto py-4 sticky top-0 shadow-lg bg-white/40 backdrop-blur-md rounded-md  ">
+            <div className="flex mt-9 md:mt-0 flex-row flex-nowrap overflow-x-auto py-4 sticky top-0 shadow-lg bg-white/40 backdrop-blur-md rounded-md  ">
                 {tabs.map((tab)=>(
                     <button key={tab.id} onClick={()=> setActiveTab(tab.id)}
                     className={`pb-3 px-2 text-sm font-extrabold relative flex-shrink-0 mx-1
