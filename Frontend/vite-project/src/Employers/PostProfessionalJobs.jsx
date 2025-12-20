@@ -331,7 +331,7 @@ export default function PostProfessionalJobs() {
                             <option value="">- Select Category -</option>
                             {categories.map((c) => (
                                 <option key={c.id} value={c.id}>
-                                    {c.name}
+                                    {c.display_name}
                                 </option>
                             ))}
                         </select>

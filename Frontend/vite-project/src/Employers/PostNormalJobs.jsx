@@ -270,7 +270,7 @@ export default function PostNormalIndividualJobs() {
                             <option value="">-select Category-</option>
                             {categories.map((c) => (
                                 <option key={c.id} value={c.id}>
-                                    {c.name}
+                                    {c.display_name}
                                 </option>
                             ))}
                         </select>
