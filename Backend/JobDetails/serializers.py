@@ -77,7 +77,7 @@ class ListAppliedJobsSerializer(serializers.ModelSerializer):
 
 ###################  JOBS APPLICATION ---------=====
 class JobApplicationSerializer(serializers.ModelSerializer):
-    cv = serializers.FileField(write_only = True, required= False)
+    # cv = serializers.FileField(write_only = True, required= False)
 
     job_slug = serializers.CharField(write_only = True)
 
@@ -90,7 +90,7 @@ class JobApplicationSerializer(serializers.ModelSerializer):
                   "status","applied_at")
         
         
-        read_only_fields = ("id","applied_at","user","status")
+        read_only_fields = ("id","applied_at","user","status") 
         extra_kwargs = {
             "job": {"write_only": True, "required":False}
         }

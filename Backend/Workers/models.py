@@ -2,6 +2,7 @@ from django.db import models
 from Users.models import UsersProfile
 from Jobs.models import JobCategory
 from uuid6 import uuid7
+from cloudinary.models import CloudinaryField
 # Create your models here.
 
      
@@ -33,7 +34,7 @@ class ProfessionalDetail(models.Model):
     linkedIn = models.URLField(blank=True, null=True)
     portfolio = models.URLField(blank=True, null=True)
     gitHub = models.URLField(blank=True, null=True)
-    cv = models.FileField(upload_to='workerCv/', blank=True, null=True)
+    cv = CloudinaryField('file', blank=True, null=True)
 
     employment_status = models.CharField(max_length=50, choices=[
                                         ("employed", "Employed"),

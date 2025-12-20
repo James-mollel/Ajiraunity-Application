@@ -3,6 +3,7 @@ from Users.models import CustomUserModel, UsersProfile
 from Jobs.models import Job
 from django.db import transaction
 from uuid6 import uuid7
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
  
@@ -26,7 +27,7 @@ class JobApplication(models.Model):
                                      ("WHATSAPP","Applied via WhatsApp"),
                                      ])
 
-    cv = models.FileField(blank=True, null=True)
+    cv = CloudinaryField('file',blank=True, null=True)
     cover_letter = models.TextField(blank=True, null=True)
     status = models.CharField(max_length=22, choices=JobStatus.choices,
                                default=JobStatus.PENDING)
