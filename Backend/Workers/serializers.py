@@ -273,8 +273,6 @@ class ProfessionalDetailSerializer(serializers.ModelSerializer):
         cv = validated_data.pop("cv",None)
         
         if cv:
-            if instance.cv:
-                instance.cv.delete(save = False)
             instance.cv = cv
 
         return super().update(instance, validated_data)

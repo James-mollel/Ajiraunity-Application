@@ -306,6 +306,8 @@ class WorkerProfileSerializer(serializers.ModelSerializer):
     district_id = serializers.IntegerField(write_only = True, required = False, allow_null = True)
     ward_id = serializers.IntegerField(write_only = True, required = False, allow_null = True)
 
+    avatar = serializers.SerializerMethodField()
+
 
 
     class Meta:
@@ -316,6 +318,13 @@ class WorkerProfileSerializer(serializers.ModelSerializer):
                   "ward_id")
         
         read_only_fields = ("id","user","phone_verified")
+
+
+    def get_avatar(self, obj):
+        if obj.avatar:
+            return obj.avatar.url.replace("http://","https://")
+        return None
+
 
     def validate_avatar(self, value):
         if value is None:
@@ -393,13 +402,11 @@ class WorkerProfileSerializer(serializers.ModelSerializer):
                 raise serializers.ValidationError("Selected ward is invalid")
             instance.ward = ward_selected
         
-        avatar = validated_data.pop("avatar", None)
+        avatar = validated_data.get("avatar")
         if avatar:
-            if instance.avatar:
-                instance.avatar.delete(save = False)
             instance.avatar = avatar
 
-        instance.save()
+        # instance.save()
 
         return super().update(instance, validated_data)
 

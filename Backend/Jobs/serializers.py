@@ -31,6 +31,28 @@ class CompanySerializer(serializers.ModelSerializer):
                    "logo_url","is_verified","created_at")
         
         read_only_fields = ("id","owner","slug","is_verified","created_at")
+    
+
+    def validate_logo(self, value):
+        MAX_AVATAR_SIZE = 5 * 1024 * 1024 
+        if value is None:
+            return value
+        
+        allowed = [".jpg",".jpeg",".png"]
+
+        name = getattr(value, "name","").lower()
+
+        if name and not any(name.endswith(ext) for ext in allowed):
+            raise serializers.ValidationError("Invaid logo type!. Only .jpg, .jpeg, .png files are allowed.")
+        
+        size = getattr(value, "size", None)
+        if size and size > MAX_AVATAR_SIZE:
+            raise serializers.ValidationError("Logo not be larger than 5MB.")
+        
+        return value
+
+
+
 
     def validate_name(self, value):
         request = self.context.get("request")
@@ -73,11 +95,12 @@ class CompanySerializer(serializers.ModelSerializer):
     
 
     def get_logo_url(self, obj):
-
         if obj.logo:
-            return obj.logo.url
+            return obj.logo.url.replace("http://","https://")
         else:
             return None
+        
+
         
     def create(self, validated_data):
         request = self.context.get("request")
@@ -103,10 +126,8 @@ class CompanySerializer(serializers.ModelSerializer):
         if instance.owner != request.user.user_profile:
             raise PermissionDenied("Your not allowed to update these information.")
         
-        logo = validated_data.pop("logo", None)
+        logo = validated_data.get("logo")
         if logo:
-            if instance.logo:
-                instance.logo.delete(save = False)
             instance.logo = logo
 
         return super().update(instance, validated_data)
@@ -451,14 +472,16 @@ class ListJobsPublicSerializer(serializers.ModelSerializer):
 
     def get_display_name(self, obj):
         if obj.category:
-          return obj.category.display_name()
+          return obj.category.display_name() 
         return None
         
 
     def get_company_logo(self, obj):
         if obj.company  and obj.company.logo:
-            return obj.company.logo.url
+            return obj.company.logo.url.replace("http://","https://")
         return None
+    
+
     
 
     

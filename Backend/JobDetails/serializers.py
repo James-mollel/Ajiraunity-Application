@@ -69,7 +69,7 @@ class ListAppliedJobsSerializer(serializers.ModelSerializer):
     def get_cv(self, obj):
      
         if obj.cv:
-            return obj.cv.url
+            return obj.cv.url.replace("http://","https://")
             
         return None
 
@@ -119,7 +119,7 @@ class JobApplicationSerializer(serializers.ModelSerializer):
         if cv is not None:
             max_size = 2* 1024 * 1024
             try:
-                cv_size = cv.size
+                cv_size =  getattr(cv, "size", None)
             except Exception:
                 raise serializers.ValidationError("Error occur while getting file size!")
             if cv_size > max_size:
@@ -127,7 +127,8 @@ class JobApplicationSerializer(serializers.ModelSerializer):
 
                 
             valid_extensions = ["pdf","doc","docx"]
-            extension = cv.name.split('.')[-1].lower()
+            name = getattr(cv, "name","")
+            extension = name.split('.')[-1].lower()
 
             if extension not in valid_extensions:
                raise serializers.ValidationError("Invalid file type. Only PDF, DOC, DOCX are allowed.")
@@ -198,9 +199,6 @@ class JobApplicationSerializer(serializers.ModelSerializer):
                     raise serializers.ValidationError("Professional profile is required when apply this kind of job!")
                 
                 if new_cv:
-                    if professional.cv:
-                        professional.cv.delete(save = False)
-                    
                     professional.cv = new_cv
                     professional.save()
 
@@ -339,7 +337,7 @@ class ReturnShortProfileSerializer(serializers.ModelSerializer):
             professional = None 
         
         if professional is not None and professional.cv:
-             return professional.cv.url 
+             return professional.cv.url.replace("http://","https://")
         
         return None
     
@@ -464,7 +462,7 @@ class ProfessionalApplicantSerializer(serializers.ModelSerializer):
         request = self.context.get("request")
 
 
-        avatar_url = profile.avatar.url if profile.avatar else None
+        avatar_url = profile.avatar.url.replace("http://","https://") if profile.avatar else None
 
         return {
             "email": profile.user.email,
@@ -513,7 +511,7 @@ class NormalApplicantsSerializer(serializers.ModelSerializer):
         request = self.context.get("request")
 
 
-        avatar_url = profile.avatar.url if profile.avatar else None
+        avatar_url = profile.avatar.url.replace("http://","https://") if profile.avatar else None
 
         return {
             "email": profile.user.email,
@@ -564,7 +562,7 @@ class JobApplicationDetailSerializer(serializers.ModelSerializer):
 
     def get_cv(self, obj):
         if obj.cv:
-            return obj.cv.url
+            return obj.cv.url.replace("http://","https://")
         
         return None
     
