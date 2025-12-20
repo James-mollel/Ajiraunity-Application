@@ -17,6 +17,7 @@ from rest_framework.exceptions import PermissionDenied
 from rest_framework.pagination import PageNumberPagination
 from django_filters.rest_framework import DjangoFilterBackend
 from django.db.models import Q,Count
+from rest_framework.parsers import FormParser, MultiPartParser
 
 
 
@@ -39,6 +40,7 @@ class CreateJobApplicationView(generics.CreateAPIView):
     authentication_classes = [CustomJWTCookieAuthentication]
     permission_classes = [IsAuthenticated, IsJobSeeker]
     serializer_class = JobApplicationSerializer
+    parser_classes = (FormParser, MultiPartParser)
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data = request.data)

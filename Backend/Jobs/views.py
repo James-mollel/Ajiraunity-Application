@@ -13,6 +13,8 @@ from rest_framework.permissions import BasePermission
 from rest_framework.pagination import PageNumberPagination
 from django_filters.rest_framework import DjangoFilterBackend
 from django.db.models import Q
+from rest_framework.parsers import MultiPartParser, FormParser
+
 
 
 class IsEmployer(BasePermission):
@@ -49,6 +51,7 @@ class ListCreateCompanyView(generics.ListCreateAPIView):
     permission_classes = [IsAuthenticated]
     authentication_classes = [CustomJWTCookieAuthentication]
     serializer_class = CompanySerializer
+    parser_classes = (FormParser, MultiPartParser)
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data = request.data)
@@ -68,6 +71,7 @@ class ViewUpdateDestroyCompanyView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsAuthenticated]
     authentication_classes = [CustomJWTCookieAuthentication]
     serializer_class = CompanySerializer
+    parser_classes = (FormParser, MultiPartParser)
 
     def get_queryset(self):
         employer_comp = getattr(self.request.user, "user_profile", None)

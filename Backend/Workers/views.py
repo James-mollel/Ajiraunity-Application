@@ -10,6 +10,8 @@ from Users.authentication import CustomJWTCookieAuthentication
 from rest_framework import generics, status
 from rest_framework.exceptions import NotFound
 from rest_framework.response import Response
+from rest_framework.parsers import MultiPartParser, FormParser
+
 # Create your views here.
 
 
@@ -17,6 +19,7 @@ class RetrieveProfessionalView(generics.RetrieveUpdateAPIView):
     permission_classes = [IsAuthenticated]
     authentication_classes = [CustomJWTCookieAuthentication]
     serializer_class = ProfessionalDetailSerializer
+    parser_classes = (FormParser, MultiPartParser)
 
     def get_object(self):
         try:
