@@ -50,16 +50,21 @@ export default function JobDetailsPage() {
 
   // Base script template
   const scriptTemplate = `
-Hello, I am interested to apply in this job '${job.title || ''}'.
+Hello,
 
-Full Name  ${userProfile.full_name || ''}
-Profession  ${userProfile.job_title || ''}
-Phone   ${userProfile.phone_number || ''}
+I am interested in this job  "${job.title || ''}".
 
-Here is my complete profile and application details:
+Applicant Details:-
+Full Name:  ${userProfile.full_name || ''}
+Profession:  ${userProfile.job_title || ''}
+Phone Number:   ${userProfile.phone_number || ''}
+
+
+You can view my complete profile and application details using the link below:
  {{application_url}}
 
-Thank you for the opportunity.
+
+ Thank you for your time and consideration.
   `;
 
 
@@ -676,7 +681,7 @@ return (
                       <CheckCircle className="w-5 h-5" />
                       Using: {userProfile.current_cv.split('/').pop()}
                     </p>
-                    <a href={backendURL + userProfile.current_cv} target="_blank" rel="noopener noreferrer"
+                    <a href={userProfile.current_cv} target="_blank" rel="noopener noreferrer"
                       className="text-indigo-600 hover:underline text-sm mt-2 inline-flex items-center gap-1">
                       <ExternalLink className="w-4 h-4" /> View CV
                     </a>
