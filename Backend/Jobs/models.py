@@ -4,6 +4,7 @@ from uuid6 import uuid7
 from django.utils.text import slugify
 from Users.models import CustomUserModel, UsersProfile
 from Locations.models import Region,District,Ward
+from cloudinary.models import CloudinaryField
 
 
  
@@ -66,7 +67,7 @@ class Company(models.Model):
     website = models.URLField(blank=True, null=True)
     email = models.EmailField()
     description = models.TextField(blank=True, null=True)
-    logo = models.ImageField(upload_to="company_logos/", blank=True, null=True)
+    logo = CloudinaryField('image', blank=True, null=True)
 
     is_verified = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)

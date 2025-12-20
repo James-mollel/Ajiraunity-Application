@@ -2,6 +2,7 @@ from django.db import models
 from uuid6 import uuid7
 from django.contrib.auth.models import PermissionsMixin, AbstractBaseUser, BaseUserManager
 from Locations.models import Region, Ward, District
+from cloudinary.models import CloudinaryField
   
 # Create your models here.
  
@@ -62,7 +63,7 @@ class UsersProfile(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid7, editable=False)
     user = models.OneToOneField(CustomUserModel, on_delete=models.CASCADE, related_name='user_profile')
 
-    avatar = models.ImageField(upload_to="Avatar/", blank=True, null=True)
+    avatar = CloudinaryField('image', blank=True, null=True)
     first_name = models.CharField(max_length=50, blank=True, null=True)
     last_name = models.CharField(max_length=50, blank=True, null=True)
 
