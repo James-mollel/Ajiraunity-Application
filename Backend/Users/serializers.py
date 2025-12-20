@@ -421,7 +421,7 @@ class EmployerProfileSerializer(serializers.ModelSerializer):
 
     def get_avatar(self, obj):
         if obj.avatar:
-            return obj.avatar.url
+            return obj.avatar.url.replace("http://","https://")
         return None
 
     def validate_avatar(self, value):
