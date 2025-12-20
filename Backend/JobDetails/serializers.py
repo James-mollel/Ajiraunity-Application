@@ -296,7 +296,7 @@ class ReturnShortProfileSerializer(serializers.ModelSerializer):
                   "email",
                   "job_title",
                   "phone_number",
-                 "current_cv", 
+                 "current_cv",
                 )
         
 
@@ -386,7 +386,7 @@ class ProfessionalApplicantLanguageSerializer(serializers.ModelSerializer):
         model = ProfessionalLanguages
         fields = (
             "language","level",
-        )
+        )  
 
 
 
@@ -586,6 +586,10 @@ class JobApplicationDetailSerializer(serializers.ModelSerializer):
                     return ProfessionalApplicantSerializer(user.professional_detail, context=context).data
                 
         return None
+    
+
+
+
 
 
 

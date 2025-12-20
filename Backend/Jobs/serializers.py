@@ -102,6 +102,8 @@ class CompanySerializer(serializers.ModelSerializer):
         
 
         
+
+    
     def create(self, validated_data):
         request = self.context.get("request")
         if request is None or not hasattr(request, "user"):
@@ -417,7 +419,7 @@ class ListJobsPublicSerializer(serializers.ModelSerializer):
 
     is_job_saved = serializers.SerializerMethodField()
 
-    #=================COMPANY============
+    #=================COMPANY===========
     company_name = serializers.CharField(source="company.name", read_only = True, allow_null = True)
     company_website = serializers.CharField(source="company.website", read_only = True, allow_null = True)
     company_logo = serializers.SerializerMethodField(allow_null = True)
@@ -457,7 +459,7 @@ class ListJobsPublicSerializer(serializers.ModelSerializer):
 
                       "apply_email","apply_website","apply_in_app","apply_whatsapp",
 
-                       "views","created_at" 
+                       "views","created_at",
                        )
         
     
@@ -485,4 +487,4 @@ class ListJobsPublicSerializer(serializers.ModelSerializer):
     
 
     
- 
+   

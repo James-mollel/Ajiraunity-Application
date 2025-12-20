@@ -18,7 +18,7 @@ from datetime import datetime
 logger = logging.getLogger(__name__)
 # User = get_user_model()
 
-MAX_AVATAR_SIZE = 5 * 1024 * 1024 
+MAX_AVATAR_SIZE = 5 * 1024 * 1024
 
 class RegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(required=True, write_only = True)
@@ -109,7 +109,7 @@ class RegisterSerializer(serializers.ModelSerializer):
 
  If you didn't register, just ignore this email.
 
-    - The <strong>Ajira <span style="color: #007bff;">unity</span></strong>! Team
+    - The <strong>Ajira<span style="color: #007bff;">unity</span></strong>! Team
                """
         
         html_content = f"""
@@ -159,9 +159,8 @@ class RegisterSerializer(serializers.ModelSerializer):
         #     message=f"Click this link {verify_url}",
         #     from_email=settings.DEFAULT_FROM_EMAIL,
         #     recipient_list=[user.email],
-        #     fail_silently=False
+        #     fail_silently=Fal
         # )
-
 
 
 

@@ -220,7 +220,7 @@ class ProfessionalDetailSerializer(serializers.ModelSerializer):
                   "prof_salary","prof_currency","prof_payment_period","payment_period_display","linkedIn","portfolio","gitHub",
                  "cv","current_cv", "employment_status","employment_status_display","experience_yrs","experience_yrs_display",
                  "education_level","education_level_display",
-                  "prof_description", "public_visible")
+                  "prof_description", "public_visible",)
         
         read_only_fields = ("id","prof_profile")
 
@@ -238,7 +238,7 @@ class ProfessionalDetailSerializer(serializers.ModelSerializer):
         if cv is not None:
             max_size = 2* 1024 * 1024
             if cv.size > max_size:
-                raise serializers.ValidationError("CV file is too large. Maximum size is 2MB")
+                raise serializers.ValidationError("CV file is too large. Maximum size is 2MB.")
             
             valid_extensions = ["pdf","doc","docx"]
             extension = cv.name.split('.')[-1].lower()
@@ -255,6 +255,8 @@ class ProfessionalDetailSerializer(serializers.ModelSerializer):
                 raise serializers.ValidationError("Invalid category")
             
         return super().validate(attrs)
+    
+
     
     
     def update(self, instance, validated_data):
