@@ -152,7 +152,7 @@ class RegisterSerializer(serializers.ModelSerializer):
         msg.send(fail_silently=False)
         
         
-
+ 
 
         # send_mail(
         #     subject="Verify Your Email",
@@ -405,7 +405,7 @@ class WorkerProfileSerializer(serializers.ModelSerializer):
         if avatar:
             instance.avatar = avatar
 
-        # instance.save()
+        instance.save()
 
         return super().update(instance, validated_data)
 
@@ -478,7 +478,7 @@ class EmployerProfileSerializer(serializers.ModelSerializer):
         if avatar:
             instance.avatar = avatar
 
-        # instance.save()
+        instance.save()
 
         return super().update(instance, validated_data)
 
