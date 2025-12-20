@@ -305,13 +305,13 @@ class WorkerProfileSerializer(serializers.ModelSerializer):
     district_id = serializers.IntegerField(write_only = True, required = False, allow_null = True)
     ward_id = serializers.IntegerField(write_only = True, required = False, allow_null = True)
 
-    avatar = serializers.SerializerMethodField()
+    avatar_url = serializers.SerializerMethodField(read_only = True)
 
 
 
     class Meta:
         model = UsersProfile
-        fields = ("id","user","avatar","first_name","last_name","gender",
+        fields = ("id","user","avatar","avatar_url","first_name","last_name","gender",
                   "age","phone_number","phone_verified","region",
                   "district","ward", "region_id","district_id",
                   "ward_id")
@@ -319,17 +319,17 @@ class WorkerProfileSerializer(serializers.ModelSerializer):
         read_only_fields = ("id","user","phone_verified")
 
 
-    def get_avatar(self, obj):
+    def get_avatar_url(self, obj):
         if obj.avatar:
             return obj.avatar.url.replace("http://","https://")
         return None
     
     
 
-
     def validate_avatar(self, value):
         if value is None:
             return value
+        
         allowed = [".jpg",".jpeg",".png"]
         name = getattr(value, 'name', "").lower()
 
@@ -407,7 +407,7 @@ class WorkerProfileSerializer(serializers.ModelSerializer):
         if avatar:
             instance.avatar = avatar
 
-        instance.save()
+        # instance.save()
 
         return super().update(instance, validated_data)
 
@@ -480,7 +480,7 @@ class EmployerProfileSerializer(serializers.ModelSerializer):
         if avatar:
             instance.avatar = avatar
 
-        instance.save()
+        # instance.save()
 
         return super().update(instance, validated_data)
 

@@ -186,8 +186,8 @@ export default function WorkersPersonalInformations() {
               setWard(profile.ward.id);
             }
 
-            if (profile.avatar){ 
-                   setUrl(profile.avatar);
+            if (profile.avatar_url){ 
+                   setUrl(profile.avatar_url);
                   
             } 
 
