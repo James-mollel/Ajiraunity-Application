@@ -225,7 +225,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 
 SITE_NAME = "Ajiraunity"
-FRONTEND_URL = config("FRONTEND_URL")
+FRONTEND_URL ="https://ajiraunity.co.tz"
 DEFAULT_FROM_EMAIL = "no-reply@gmail.com"
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
