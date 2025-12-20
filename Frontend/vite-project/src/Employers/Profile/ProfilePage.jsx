@@ -329,5 +329,5 @@ export default function EmployerProfileInfo() {
 
             </div>
          </div>
-  );
+  ); 
 }

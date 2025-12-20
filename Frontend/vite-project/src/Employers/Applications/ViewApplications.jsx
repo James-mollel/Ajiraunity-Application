@@ -266,7 +266,7 @@ export default function ViewApplicationDetails() {
                             </div>
 
                             {application.cv && (
-                                <a href={backendURL + application.cv} download className="flex items-center justify-center gap-2 w-full mt-6 bg-gray-900 text-white py-3 rounded-xl text-sm font-bold hover:bg-indigo-600 transition-all shadow-lg shadow-gray-200">
+                                <a href={application.cv} download className="flex items-center justify-center gap-2 w-full mt-6 bg-gray-900 text-white py-3 rounded-xl text-sm font-bold hover:bg-indigo-600 transition-all shadow-lg shadow-gray-200">
                                     <Download size={18} /> Download CV / Resume
                                 </a>
                             )}

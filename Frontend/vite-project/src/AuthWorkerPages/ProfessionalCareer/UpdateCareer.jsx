@@ -328,7 +328,7 @@ export default function EditProfessionalCareer({data,onSave,onCancel}) {
                         />
                         {data?.current_cv && (
                             <p className="text-sm text-red-700 font-semibold mt-1">
-                              Current CV: <a href={ backendURL + data.current_cv} rel="noopener noreferrer" target="_blank" className=" underline" >{data.current_cv.split("/").pop()}</a>
+                              Current CV: <a href={data.current_cv} rel="noopener noreferrer" target="_blank" className=" underline" >{data.current_cv.split("/").pop()}</a>
                             </p>
                         )}
                       </div>

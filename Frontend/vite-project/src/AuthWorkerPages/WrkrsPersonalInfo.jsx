@@ -189,7 +189,7 @@ export default function WorkersPersonalInformations() {
             if (profile.avatar){ 
                    setUrl(profile.avatar);
                   
-            }
+            } 
 
           }catch(err){
             toast.error("failed to fetch user profile, please try again!")

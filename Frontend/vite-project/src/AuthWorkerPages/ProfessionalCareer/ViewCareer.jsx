@@ -27,7 +27,7 @@ export default function ViewProfessionalCarrer({ data, onEdit }) {
   );
 
   const backendURL = import.meta.env.VITE_BACKEND_URL || "http://127.0.0.1:8000";
-  const fileUrl = data.current_cv ? backendURL + data.current_cv : null
+  const fileUrl = data.current_cv ? data.current_cv : null
 
   
 
