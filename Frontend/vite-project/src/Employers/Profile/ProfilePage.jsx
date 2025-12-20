@@ -122,7 +122,7 @@ export default function EmployerProfileInfo() {
             setEmail(profile.user)
 
             if (profile.avatar){ 
-                   setUrl(profile.avatar);
+                   setUrl(profile.avatar.url);
                   
             }
 
