@@ -462,13 +462,11 @@ class EmployerProfileSerializer(serializers.ModelSerializer):
             raise PermissionDenied("You are not allowed to perform this action.")
 
         
-        avatar = validated_data.pop("avatar", None)
+        avatar = validated_data.get("avatar")
         if avatar:
-            if instance.avatar:
-                instance.avatar.delete(save = False)
             instance.avatar = avatar
 
-        instance.save()
+        # instance.save()
 
         return super().update(instance, validated_data)
 
