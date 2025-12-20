@@ -73,10 +73,8 @@ class CompanySerializer(serializers.ModelSerializer):
     
 
     def get_logo_url(self, obj):
-        request = self.context.get("request")
-        if obj.logo and request:
-            return request.build_absolute_uri(obj.logo.url)
-        elif obj.logo:
+
+        if obj.logo:
             return obj.logo.url
         else:
             return None
@@ -459,8 +457,7 @@ class ListJobsPublicSerializer(serializers.ModelSerializer):
 
     def get_company_logo(self, obj):
         if obj.company  and obj.company.logo:
-            request = self.context.get("request")
-            return request.build_absolute_uri(obj.company.logo.url)
+            return obj.company.logo.url
         return None
     
 

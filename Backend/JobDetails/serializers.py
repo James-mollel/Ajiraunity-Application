@@ -60,7 +60,7 @@ class ListAppliedJobsSerializer(serializers.ModelSerializer):
                     
                     "job_salary_max","job_salary_min","job_currency","job_payment_period",
 
-                   "cv","application_method_display" )
+                   "application_method_display" )
         
         read_only_fields = ("id",)
 
@@ -69,10 +69,6 @@ class ListAppliedJobsSerializer(serializers.ModelSerializer):
     def get_cv(self, obj):
      
         if obj.cv:
-            request = self.context.get('request')
-            
-            if request:
-                return request.build_absolute_uri(obj.cv.url)
             return obj.cv.url
             
         return None
@@ -469,8 +465,6 @@ class ProfessionalApplicantSerializer(serializers.ModelSerializer):
 
 
         avatar_url = profile.avatar.url if profile.avatar else None
-        if avatar_url and request:
-            avatar_url = request.build_absolute_uri(avatar_url)
 
         return {
             "email": profile.user.email,
@@ -520,8 +514,6 @@ class NormalApplicantsSerializer(serializers.ModelSerializer):
 
 
         avatar_url = profile.avatar.url if profile.avatar else None
-        if avatar_url and request:
-            avatar_url = request.build_absolute_uri(avatar_url)
 
         return {
             "email": profile.user.email,

@@ -18,6 +18,7 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 from django.http import JsonResponse
 from rest_framework.throttling import UserRateThrottle
 from .retelimit import ratelimit
+from rest_framework.parsers import FormParser, MultiPartParser
 from django.db import transaction
 import datetime
 
@@ -262,6 +263,7 @@ class WorkerProfileView(generics.RetrieveUpdateAPIView):
     permission_classes = [IsAuthenticated, IsJobSeeker]
     authentication_classes = [CustomJWTCookieAuthentication]
     serializer_class = WorkerProfileSerializer
+    parser_classes = (MultiPartParser, FormParser)
     # throttle_classes = [ProfileUpdateThrottle]
 
 
@@ -296,6 +298,7 @@ class EmployerProfileView(generics.RetrieveUpdateAPIView):
     permission_classes = [IsAuthenticated, IsEmployer]
     authentication_classes = [CustomJWTCookieAuthentication]
     serializer_class = EmployerProfileSerializer
+    parser_classes = (MultiPartParser, FormParser)
 
 
     def get_object(self): 

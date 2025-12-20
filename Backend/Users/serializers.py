@@ -306,7 +306,7 @@ class WorkerProfileSerializer(serializers.ModelSerializer):
     district_id = serializers.IntegerField(write_only = True, required = False, allow_null = True)
     ward_id = serializers.IntegerField(write_only = True, required = False, allow_null = True)
 
-    avatar  = serializers.ImageField(required = False, allow_null = True)
+
 
     class Meta:
         model = UsersProfile
@@ -321,12 +321,13 @@ class WorkerProfileSerializer(serializers.ModelSerializer):
         if value is None:
             return value
         allowed = [".jpg",".jpeg",".png"]
-        name = value.name.lower()
+        name = getattr(value, 'name', "").lower()
 
-        if not any(name.endswith(ext) for ext in allowed):
+        if name and not any(name.endswith(ext) for ext in allowed):
             raise serializers.ValidationError("Invaid image type!. Only .jpg, .jpeg, .png files are allowed.")
         
-        if value.size > MAX_AVATAR_SIZE:
+        size = getattr(value, "size", None)
+        if size and size > MAX_AVATAR_SIZE:
             raise serializers.ValidationError("Profile image may not be larger than 5MB.")
         
         return value
@@ -409,7 +410,6 @@ class WorkerProfileSerializer(serializers.ModelSerializer):
 #==============SHORT EMPLOYER PROFILE =============
 class EmployerProfileSerializer(serializers.ModelSerializer):
     user = serializers.StringRelatedField(read_only = True)
-    avatar  = serializers.ImageField(required = False, allow_null = True)
 
     class Meta:
         model = UsersProfile
@@ -422,12 +422,14 @@ class EmployerProfileSerializer(serializers.ModelSerializer):
         if value is None:
             return value
         allowed = [".jpg",".jpeg",".png"]
-        name = value.name.lower()
 
-        if not any(name.endswith(ext) for ext in allowed):
+        name = getattr(value, "name","").lower()
+
+        if name and not any(name.endswith(ext) for ext in allowed):
             raise serializers.ValidationError("Invaid image type!. Only .jpg, .jpeg, .png files are allowed.")
         
-        if value.size > MAX_AVATAR_SIZE:
+        size = getattr(value, "size", None)
+        if size and size > MAX_AVATAR_SIZE:
             raise serializers.ValidationError("Profile image may not be larger than 5MB.")
         
         return value
