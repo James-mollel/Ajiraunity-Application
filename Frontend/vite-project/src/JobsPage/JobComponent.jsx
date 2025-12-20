@@ -80,7 +80,7 @@ const handleSaveJob = async(e)=>{
          
 
            <span className={`px-3 py-1.5 text-xs text-center font-bold rounded-full ${isIndividual ? "bg-pink-100 text-pink-700" : "bg-indigo-100 text-indigo-700"}`}>
-            {isIndividual ? "Casual job" : "Professional job"}
+            {isIndividual ? "Casual" : "Professional"}
           </span>
         </div>
 
