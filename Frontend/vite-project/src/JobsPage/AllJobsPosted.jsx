@@ -195,7 +195,7 @@ export default function ListAllJobsPublic() {
             Find Your Next Job
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Explore thousands of opportunities from companies and individuals across Tanzania
+             Tafuta kazi kwa jina la kazi, eneo (mtaa au kata), kategoria, na zaidi kote Tanzania.
           </p>
         </header>
 
@@ -213,7 +213,7 @@ export default function ListAllJobsPublic() {
             {query && <p className="text-sm text-gray-600 mt-1">Searching for: <strong className="text-indigo-700">"{query}"</strong></p>}
           </div>
 
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-3 justify-center">
             <button onClick={() => { setPostType(""); setCurrentPage(1); }}
               className={`px-6 py-3 rounded-xl font-semibold transition ${!postType ? "bg-indigo-600 text-white shadow-lg" : "bg-white text-gray-700 shadow"}`}>
               All Jobs

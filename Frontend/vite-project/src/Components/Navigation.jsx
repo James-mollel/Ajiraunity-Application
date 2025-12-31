@@ -15,18 +15,27 @@ export default function Navigation() {
      : "text-neutral-800 font-bold hover:underline underline-offset-4"
     };
 
+   
+
   return (
 
-    <nav className="bg-white/80 backdrop-blur-md shadow-md sticky top-0 z-50">
+    <nav className="bg-blue-50/40 backdrop-blur-md shadow-md sticky top-0 z-50">
 
       <div className="container mx-auto px-6 lg:px-14 py-2 flex justify-between items-center">
-        {/* Logo */}
-        <Link
-          to="/"
-          className="font-inter text-4xl md:text-5xl text-gray-900 drop-shadow-md font-bold tracking-tight"
-        >
-          Ajira<span className="text-blue-700 lowercase" >unity</span>
-        </Link>
+
+       {/* Logo */}
+          <Link to="/" className="group flex items-center no-underline">
+            {/* Optional Modern Icon (Unity/Connection Symbol) */}
+           
+
+            {/* The Text */}
+            <span className="font-sans text-3xl md:text-4xl font-black tracking-tight text-slate-900">
+              Ajira
+              <span className="bg-gradient-to-r from-indigo-600 via-indigo-900-600 to-cyan-500 bg-clip-text text-transparent">
+                unity
+              </span>
+            </span>
+          </Link>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-10">
@@ -34,7 +43,7 @@ export default function Navigation() {
             Home
           </NavLink>
           <NavLink to="/all-jobs" className={navClass}>
-            Jobs
+           All Jobs
           </NavLink>
           {/* <NavLink to="/talents" className={navClass}>
             
@@ -49,7 +58,17 @@ export default function Navigation() {
   <div>
         {loading ? (
          
-         <Loader className="animate-spin text-gray-700"/>
+            <div className="flex items-center space-x-4 animate-pulse">
+              {/* Profile icon skeleton */}
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-slate-200 to-slate-300 shadow-inner" />
+
+              {/* Text skeleton */}
+              <div className="flex flex-col space-y-2">
+                <div className="w-24 h-4 rounded-full bg-gradient-to-r from-slate-200 to-slate-300" />
+                <div className="w-16 h-3 rounded-full bg-gradient-to-r from-slate-200 to-slate-300" />
+              </div>
+            </div>
+                
           
         ):(
       <div>
@@ -108,20 +127,22 @@ export default function Navigation() {
           </button>
     </div>
          ): (
-              <div className="hidden md:flex items-center space-x-4">
-                  <NavLink
-                    to="/account-type"
-                    className="py-2 px-5 rounded-md border bg-gradient-to-br from-white via-white to-gray-300 text-gray-800 hover:from-gray-500 hover:to-white hover:text-gray-800 transition"
-                  >
-                    Register
-                  </NavLink>
-                  <NavLink
-                    to="/user-login"
-                    className="py-2 px-5 bg-black rounded-md text-white hover:bg-gray-800 transition"
-                  >
-                    Login
-                  </NavLink>
-              </div>
+
+      <div className="hidden md:flex items-center space-x-4">
+          <NavLink
+            to="/account-type"
+            className="px-6 py-2.5 text-base font-medium text-indigo-700 border-2 border-indigo-600 rounded-full hover:bg-gradient-to-r hover:from-indigo-600 hover:to-indigo-500 hover:text-white hover:border-transparent transition-all duration-300 shadow-sm hover:shadow-md"
+          >
+            Create account
+          </NavLink>
+
+          <NavLink
+            to="/user-login"
+            className="px-6 py-2.5 text-base font-medium text-white bg-gradient-to-r from-indigo-600 to-cyan-500 rounded-full hover:from-indigo-700 hover:to-cyan-600 shadow-md hover:shadow-lg transition-all duration-300"
+          >
+            Login
+          </NavLink>
+     </div>
 
             )}
        </div>
@@ -172,7 +193,7 @@ export default function Navigation() {
               onClick={()=> setOpen(false)}
               
             >
-              Jobs
+              All Jobs
             </NavLink>
 
              {/* <NavLink
@@ -199,7 +220,16 @@ export default function Navigation() {
 
   <div className="mt-10">
       {loading ? (
-         <Loader className="animate-spin text-gray-700"/>
+         <div className="flex items-center space-x-4 animate-pulse">
+              {/* Profile icon skeleton */}
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-slate-200 to-slate-300 shadow-inner" />
+
+              {/* Text skeleton */}
+              <div className="flex flex-col space-y-2">
+                <div className="w-24 h-4 rounded-full bg-gradient-to-r from-slate-200 to-slate-300" />
+                <div className="w-16 h-3 rounded-full bg-gradient-to-r from-slate-200 to-slate-300" />
+              </div>
+         </div>
           
         ):(
       <div>
@@ -259,18 +289,25 @@ export default function Navigation() {
           </button>
     </div>
          ): (
+   
               <div className="flex items-start space-y-4 flex-col">
                   <NavLink
                    onClick={()=> setOpen(false)}
                     to="/account-type"
-                    className="py-2 px-5 rounded-md border bg-gradient-to-br from-white via-white to-gray-300 text-gray-800 hover:from-gray-500 hover:to-white hover:text-gray-800 transition"
-                  >
-                    Register
+                     className="px-6 py-2.5 text-base font-medium
+                      text-indigo-700 border-2 border-indigo-600 rounded-full hover:bg-gradient-to-r
+                       hover:from-indigo-600 hover:to-indigo-500 hover:text-white hover:border-transparent
+                        transition-all duration-300 shadow-sm hover:shadow-md"
+                      >
+                      Create account
                   </NavLink>
+
                   <NavLink
                     onClick={()=> setOpen(false)}
                     to="/user-login"
-                    className="py-2 px-5 rounded-md bg-black text-white hover:bg-gray-800 transition"
+                     className="px-6 py-2.5 text-base font-medium text-white bg-gradient-to-r from-indigo-600 to-cyan-500 rounded-full hover:from-indigo-700
+                      hover:to-cyan-600 shadow-md hover:shadow-lg transition-all duration-300"
+                   
                   >
                     Login
                   </NavLink>

@@ -141,10 +141,10 @@ const FooterPublic = () => {
 
           {/* For Candidates */}
           <div>
-            <h4 className="text-white font-semibold mb-6 uppercase text-xs tracking-widest">For Candidates</h4>
+            <h4 className="text-white font-semibold mb-6 uppercase text-xs tracking-widest">For Job Seekers</h4>
             <ul className="space-y-4 text-sm">
               <li><Link to="/all-jobs" className="hover:text-blue-400 transition-colors">Browse Jobs</Link></li>
-              <li><Link to="/user-login" className="hover:text-blue-400 transition-colors">Candidate Dashboard</Link></li>
+              <li><Link to="/user-login" className="hover:text-blue-400 transition-colors">Manage Profile</Link></li>
               <li><Link to="/user-login" className="hover:text-blue-400 transition-colors">Applied Jobs</Link></li>
               <li><Link to="/account-type" className="hover:text-blue-400 transition-colors">Create Account</Link></li>
             </ul>
@@ -154,8 +154,8 @@ const FooterPublic = () => {
           <div>
             <h4 className="text-white font-semibold mb-6 uppercase text-xs tracking-widest">For Employers</h4>
             <ul className="space-y-4 text-sm">
-              <li><Link to="/user-login" className="hover:text-blue-400 transition-colors">Post Jobs <span className='text-indigo-700 font-semibold'>All Types</span></Link></li>
-              <li><Link to="/user-login" className="hover:text-blue-400 transition-colors">Employer Dashboard</Link></li>
+              <li><Link to="/user-login" className="hover:text-blue-400 transition-colors">Post a Job </Link></li>
+              <li><Link to="/user-login" className="hover:text-blue-400 transition-colors">Dashboard</Link></li>
               <li><Link to="/user-login" className="hover:text-blue-400 transition-colors">Manage Companies</Link></li>
               <li><Link to="/user-login" className="hover:text-blue-400 transition-colors">Review Applications</Link></li>
             </ul>
@@ -176,10 +176,6 @@ const FooterPublic = () => {
                    </Link>
                  </li>
                   
-                  <li>
-                     <span onClick={()=>setShowModel(true)}
-                      className='hover:text-indigo-600 cursor-pointer' >Feedback</span>   
-                  </li>
 
                   <li>
                       <span className='hover:text-indigo-600' >Contact Us</span>
@@ -330,6 +326,22 @@ const FooterPublic = () => {
  </div>
 
       )}
+
+<button
+  onClick={() => setShowModel(true)}
+  className="
+    fixed bottom-6 right-6 z-40
+    flex items-center gap-2
+    rounded-full bg-indigo-600 px-5 py-3
+    text-sm font-semibold text-white
+    shadow-lg shadow-indigo-500/30
+    hover:bg-indigo-700 hover:scale-105
+    transition-all duration-300
+  "
+>
+  <MessageSquare size={18} />
+  Feedback
+</button>
 
   
 

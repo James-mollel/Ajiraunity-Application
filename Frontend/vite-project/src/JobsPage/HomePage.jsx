@@ -2,12 +2,65 @@ import { useState, useEffect } from "react";
 import api from "../AxiosApi/Api";
 import FullScreenLoader from "../Components/Loader";
 import { toast } from "react-hot-toast";
-import { Building2, MapPin, Briefcase, DollarSign, Search, ArrowRight , BriefcaseIcon,Award} from "lucide-react";
+import {
+         MapPin, DollarSign,
+          Search, ArrowRight, Building2, 
+        Briefcase, CheckCircle2, Users,
+        BriefcaseIcon,Award,  Globe,  Zap,  MessageSquare, 
+    Navigation, Store
+       } from "lucide-react";
+
 import JobCard from "./JobComponent";
 import { Link } from "react-router";
 
 
 // Helper function to format salary nicely
+
+
+
+
+
+
+
+  const features = [
+    {
+      title: "Uhuru wa Fursa Zote",
+      description: "Kuanzia kazi za mtaani na nyumbani (fundi, dada wa kazi, muuza duka) hadi za kitaaluma (Accountant, Doctor, IT). Zote unaweza kutafuta na kutangaza ndani ya Ajira Unity",
+      icon: <div className="flex gap-1"><Store className="w-6 h-6 text-emerald-400" /><Briefcase className="w-6 h-6 text-indigo-400" /></div>,
+      grid: "md:col-span-2",
+      bg: "from-emerald-500/10 to-indigo-500/10"
+    },
+    {
+      title: "Rahisi kwa Kila Mtu",
+      description: "Uwe kampuni au mtu binafsi, tangaza fursa za kazi kwa dakika chache na upate mfanyakazi sahihi kwa haraka.",
+      icon: <Zap className="w-8 h-8 text-yellow-400" />,
+      grid: "md:col-span-1",
+      bg: "from-yellow-500/10 to-orange-500/10"
+    },
+    {
+      title: "Chagua Njia ya Kupokea Maombi",
+      description: "Pokea maombi ya kazi kwa njia unayopendelea: WhatsApp, Email, au moja kwa moja kupitia mfumo wetu wa AjiraUnity.",
+      icon: <MessageSquare className="w-8 h-8 text-blue-400" />,
+      grid: "md:col-span-1",
+      bg: "from-blue-500/10 to-cyan-500/10"
+    },
+    {
+      title: "Tangaza Kazi Kwenye Eneo Sahihi",
+      description: "Lenga wahitaji hadi ngazi ya Kata (mfano: Dar es Salaam, Ilala, Buguruni). Tangaza fursa yako kwenye eneo husika ili kuwafikia watu sahihi kwa haraka.",
+      icon: <MapPin className="w-8 h-8 text-red-400" />,
+      grid: "md:col-span-1",
+      bg: "from-red-500/10 to-pink-500/10"
+    },
+    {
+      title: "Tafuta Kazi Karibu na Wewe",
+      description: "Tafuta kazi kwa jina la kata au mtaa. Omba fursa zilizopo karibu nawe kwa urahisi na uharakishe safari yako ya kupata ajira wakati wowote.",
+      icon: <Navigation className="w-8 h-8 text-purple-400" />,
+      grid: "md:col-span-1",
+      bg: "from-purple-500/10 to-indigo-500/10"
+    }
+  ];
+
+ 
 
 
 
@@ -72,108 +125,123 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       {/* HERO SECTION - Modern & Stunning */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-indigo-950 via-blue-950 to-indigo-950 text-white py-24 md:py-32">
-        <div className="absolute inset-0 bg-black opacity-20"></div>
-        <div className="absolute inset-0 bg-grid-white/10 bg-grid"></div>
-
-        <div className="relative max-w-5xl mx-auto px-6 text-center space-y-10">
-          <div className="space-y-5">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight animate-fade-in">
-              Opportunities for <span className="text-teal-400">Everyone </span>
-              <br className="hidden sm:block" />
-              From Street to Suite
-            </h1>
-              <p className="text-indigo-100 text-lg md:text-xl max-w-2xl mx-auto">
-                       Find 
-                     <span className="text-cyan-400 font-semibold"> casual daily tasks </span> 
-                          and 
-                   <span className="text-indigo-300 font-semibold"> professional careers </span> 
-                        near you — all in one place.
-                     </p>
-            
-          </div>
-
-                    {/* ULTRA RESPONSIVE & MODERN SEARCH BAR - Works perfectly on ALL devices */}
-          <Link to="/all-jobs" className="w-full max-w-4xl mx-auto px-4 sm:px-0">
-            <div className="relative group">
-              {/* Subtle animated glow effect */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-2xl blur-xl opacity-30 group-hover:opacity-50 transition duration-700"></div>
-
-              {/* Main Search Container */}
-              <div className="relative bg-white/90 backdrop-blur-2xl rounded-2xl shadow-2xl border border-white/20 overflow-hidden">
-                
-                <div className="flex flex-col sm:flex-row items-stretch w-full">
-                  
-                  {/* Input + Icon + Suggestion Text */}
-                  <div className="relative flex-1 flex items-center">
-                    <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-6 h-6 text-indigo-600 z-10" />
-                    
-                    {/* Animated Suggestion Text */}
-                    <span
-                      className={`absolute left-14 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none
-                        text-sm sm:text-base transition-all duration-700 origin-left
-                        ${fade ? "opacity-100 scale-100" : "opacity-0 scale-95"}`}
-                    >
-                      {suggestions[currentSuggestion]}
-                    </span>
-
-                    <input
-                      type="text"
-                      className="w-full px-14 py-5 sm:py-6 text-gray-800 text-base sm:text-sm
-                                bg-transparent focus:outline-none placeholder-gray-400
-                                transition-all duration-300"
-                      onFocus={(e) => e.target.placeholder = ""}
-                      onBlur={(e) => e.target.placeholder = "Search jobs, titles, locations..."}
-                    />
-                  </div>
-
-                  {/* Search Button - Full width on mobile, inline on larger screens */}
-                  <div className="sm:w-auto w-full sm:border-l border-gray-200">
-                    <button
-                      className="w-full sm:w-auto px-10 sm:px-12 py-5 sm:py-6 
-                                bg-gradient-to-r from-indigo-600 to-purple-600 
-                                hover:from-indigo-700 hover:to-purple-700 
-                                text-white font-bold text-base sm:text-lg
-                                rounded-xl sm:rounded-none sm:rounded-r-2xl
-                                transition-all duration-300 flex items-center justify-center gap-3
-                                shadow-lg hover:shadow-xl transform hover:scale-[1.02]"
-                    >
-                      <span className="hidden sm:inline">Search Jobs</span>
-                      <span className="sm:hidden">Search</span>
-                      <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          
-
-            {/* Quick Action Buttons */}
-            <div className="flex flex-wrap justify-center gap-4 mt-8">
-              <a
-                href="/jobs/company"
-                className="px-8 py-4 bg-indigo-600 text-white font-bold rounded-full hover:bg-indigo-700 transition-all shadow-lg flex items-center gap-2"
-              >
-                <Building2 className="w-5 h-5" />
-                Professional Jobs
-              </a>
-              <a
-                href="/jobs/individual"
-                className="px-8 py-4 bg-pink-500 text-white font-bold rounded-full hover:bg-pink-700 transition-all shadow-lg flex items-center gap-2"
-              >
-                <Briefcase className="w-5 h-5" />
-                Casual Jobs
-              </a>
-            </div>
-          </Link>
 
 
-        </div>
+      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-slate-50 text-slate-900 pt-20 pb-16">
+  {/* Background Orbs for Depth - Softer and more pastel */}
+  <div className="absolute top-0 -left-20 w-96 h-96 bg-indigo-500/10 rounded-full blur-[120px] pointer-events-none"></div>
+  <div className="absolute bottom-0 -right-20 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] pointer-events-none"></div>
+  
+  {/* Subtle Grid Pattern - Changed to dark lines with very low opacity */}
+  <div className="absolute inset-0 opacity-[0.05] [mask-image:radial-gradient(ellipse_at_center,black,transparent)] bg-[grid-slate-900/20] pointer-events-none">
+    <div className="absolute inset-0 opacity-10"></div>
+  </div>
+
+  <div className="relative max-w-6xl mx-auto px-6 flex flex-col items-center text-center">
+    
+    {/* Top Badge */}
+    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-slate-200 mb-8 shadow-sm animate-fade-in-up">
+      <span className="relative flex h-2 w-2">
+        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+        <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+      </span>
+      <span className="text-xs font-bold text-slate-500 uppercase tracking-widest">Rahisi • Salama • Haraka</span>
+    </div>
+
+    {/* Main Heading */}
+    <h1 className="text-5xl lg:text-7xl font-extrabold tracking-normal leading-[1.1] mb-6 text-slate-900">
+         Ajira kwa  
+        <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 via-blue-600 to-emerald-600">
+               kila mtu 
+            </span>
+        ,   mahali popote
+    </h1>
+
+    <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto mb-12 leading-relaxed">
+        Kutoka <span className="text-slate-900 font-semibold">taaluma za kampuni</span> hadi 
+        <span className="text-slate-900 font-semibold"> fursa za kila siku mtaani</span>. 
+        Tunakuunganisha na kazi zote katika mfumo mmoja—rahisi, salama, na haraka kwa kila mtu.
+     </p>
 
   
-      </section>
 
+    {/* Professional Search Bar */}
+    <div className="w-full max-w-4xl mx-auto mb-10">
+      <div className="relative group">
+        {/* Softer glow effect */}
+        <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500/20 to-blue-500/20 rounded-[22px] blur-md opacity-0 group-hover:opacity-100 transition duration-500"></div>
+        
+        <div className="relative bg-white border border-slate-200 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.05)] p-2 sm:p-3 flex flex-col sm:flex-row items-center gap-2">
+          <div className="relative flex-1 w-full flex items-center">
+            <Search className="absolute left-4 w-5 h-5 text-slate-400" />
+            <input
+              type="text"
+              placeholder={`Try "${suggestions[currentSuggestion]}"`}
+              className="w-full bg-transparent pl-12 pr-4 py-4 text-slate-900 placeholder-slate-400 focus:outline-none text-lg"
+            />
+          </div>
+          
+          <div className="h-8 w-[1px] bg-slate-200 hidden sm:block"></div>
+
+          <Link to="/all-jobs" className="w-full sm:w-auto px-8 py-4 bg-indigo-600 text-white hover:bg-indigo-700 font-bold rounded-xl transition-all shadow-lg shadow-indigo-200 flex items-center justify-center gap-2 group/btn">
+            Find Opportunities
+            <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+          </Link>
+        </div>
+      </div>
+    </div>
+
+    {/* Category Quick Links */}
+
+      <div className="flex flex-wrap justify-center items-center gap-4 md:gap-12 mb-16">
+        
+        {/* Professional Category */}
+        <div className="group flex items-center gap-4 p-2 pr-4 rounded-2xl hover:bg-white hover:shadow-xl hover:shadow-indigo-500/10 transition-all duration-300 border border-transparent hover:border-indigo-100">
+          <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-xl bg-indigo-50 text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-300 shadow-sm">
+            <Building2 className="w-6 h-6" />
+          </div>
+          <div className="flex flex-col">
+            <span className="font-bold text-slate-900 group-hover:text-indigo-600 transition-colors tracking-tight">Professional Jobs</span>
+            <span className="text-xs text-slate-500">Ajira za Kitaaluma</span>
+          </div>
+        </div>
+
+        {/* Separator - Hidden on Mobile */}
+        <div className="hidden md:block h-8 w-[1px] bg-gradient-to-b from-transparent via-slate-200 to-transparent"></div>
+
+        {/* Casual Category */}
+        <div to="/jobs/individual" className="group flex items-center gap-4 p-2 pr-4 rounded-2xl hover:bg-white hover:shadow-xl hover:shadow-emerald-500/10 transition-all duration-300 border border-transparent hover:border-emerald-100">
+          <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-xl bg-emerald-50 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300 shadow-sm">
+            <Briefcase className="w-6 h-6" />
+          </div>
+          <div className="flex flex-col">
+            <span className="font-bold text-slate-900 group-hover:text-emerald-600 transition-colors tracking-tight">Casual / Street Jobs</span>
+            <span className="text-xs text-slate-500">Ajira za Mtaani</span>
+          </div>
+        </div>
+      </div>
+
+    {/* Social Proof / Trust Bar */}
+    <div className="pt-8 border-t border-slate-200 w-full flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-700">
+       <div className="flex items-center gap-2 text-slate-700">
+          <Users className="w-5 h-5" />
+          <span className="text-sm font-bold uppercase tracking-tight">Active Seekers</span>
+       </div>
+       <div className="flex items-center gap-2 text-slate-700">
+          <CheckCircle2 className="w-5 h-5" />
+          <span className="text-sm font-bold uppercase tracking-tight">Verified Jobs</span>
+       </div>
+       <div className="flex items-center gap-2">
+          <div className="font-black text-xl italic tracking-tighter text-slate-400">TRUSTED JOBS</div>
+       </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+     
      <section className="max-w-7xl mx-auto px-6 py-20 space-y-24">
         {/* Professional Jobs */}
         <div>
@@ -225,6 +293,62 @@ export default function HomePage() {
           )}
         </div>
       </section>
+
+
+
+    <section className="bg-slate-50 py-24 px-6 relative overflow-hidden">
+      {/* Soft decorative background element */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-indigo-500/[0.03] rounded-full blur-[120px] pointer-events-none"></div>
+
+      <div className="max-w-7xl mx-auto relative">
+        <div className="text-center mb-16">
+          <h3 className="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
+            Kwanini uchague <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-blue-600">AjiraUnity</span> leo?
+          </h3>
+          <p className="text-slate-600 mt-4 max-w-2xl mx-auto text-lg">
+          Mfumo mmoja kwa kazi zote 😎— rahisi, salama, na haraka.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {features.map((feature, index) => (
+            <div 
+              key={index}
+              className={`group relative p-8 rounded-3xl border border-slate-200 bg-white hover:border-indigo-200 transition-all duration-500 shadow-sm hover:shadow-xl hover:shadow-indigo-500/5 ${feature.grid}`}
+            >
+              {/* Subtle Gradient Glow on Hover */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${feature.bg} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl`}></div>
+              
+              <div className="relative z-10 cursor-pointer">
+                <div className="mb-6 inline-block p-3 rounded-2xl bg-slate-50 border border-slate-100 group-hover:bg-white group-hover:scale-110 transition-all duration-500">
+                  {feature.icon}
+                </div>
+                
+                <h4 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-indigo-600 transition-colors">
+                  {feature.title}
+                </h4>
+                
+                <p className="text-slate-600 leading-relaxed group-hover:text-slate-700 transition-colors">
+                  {feature.description}
+                </p>
+
+             
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Bottom Call to Action */}
+        <div className="mt-20 text-center">
+          <Link to="/account-type" className="px-10 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-3xl transition-all shadow-lg shadow-indigo-200 hover:shadow-indigo-300 transform hover:-translate-y-1">
+            Anza Sasa Bila Malipo
+          </Link>
+        </div>
+      </div>
+    </section>
+  
+  
+
 
     </div>
   );
