@@ -21,6 +21,8 @@ import JobDetailsPage from "./JobsPage/JobDetails";
 
 import AboutUs from "./Pages/About";
 import NotFound from "./Pages/NotFound";
+import PrivacyPolicy from "./Terms/Privacy";
+import TermsOfService from "./Terms/Terms";
 
 
 // ================ layouts===========
@@ -114,6 +116,9 @@ function App() {
              } />
 
              <Route path="/about-us" element={<AboutUs/>} />
+
+             <Route path="/privacy" element={<PrivacyPolicy/>} />
+             <Route path="/terms" element={<TermsOfService/>} />
 
             <Route path="register-worker/" element={
               <UserIsAuthenticated>

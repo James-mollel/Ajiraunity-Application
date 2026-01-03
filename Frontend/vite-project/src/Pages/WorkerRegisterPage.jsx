@@ -211,6 +211,14 @@ export default function WorkerRegistrationPage() {
                         showToggle={true}  
                     />
 
+                    <p className="text-sm text-gray-600 mt-2">
+                        By registering, you agree to our{' '}
+                        <Link to="/terms" className="text-indigo-600 hover:underline">Terms of Service</Link>{' '}
+                        and{' '}
+                        <Link to="/privacy" className="text-indigo-600 hover:underline">Privacy Policy</Link>.
+                    </p>
+
+
                     <div>
                         <button
                             type="submit"

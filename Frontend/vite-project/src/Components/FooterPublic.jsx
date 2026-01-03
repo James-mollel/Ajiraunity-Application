@@ -102,9 +102,6 @@ const FooterPublic = () => {
           {/* Brand Section */}
           <div className="space-y-6">
             <Link to="/" className="flex items-center gap-2">
-              <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-white font-bold text-xl">
-                A
-              </div>
               <span className="text-2xl font-bold text-white tracking-tight">Ajira<span className="text-blue-500">unity</span></span>
             </Link>
             <p className="text-slate-400 leading-relaxed max-w-xs">
@@ -170,15 +167,8 @@ const FooterPublic = () => {
                       <span>About</span>   
                    </Link>
                 </li>
-                 <li>
-                   <Link to="/about-us#faqs">
-                        <span className='hover:text-indigo-600'>Frequently Asked Questions</span>  
-                   </Link>
-                 </li>
-                  
-
                   <li>
-                      <span className='hover:text-indigo-600' >Contact Us</span>
+                      <span className='hover:text-indigo-600' >Contact</span>
                   </li>
 
                 <li>
@@ -207,11 +197,11 @@ const FooterPublic = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-16 pt-8 border-t border-slate-900 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
+        <div className="mt-16 pt-8 mb-12 border-t border-slate-900 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
           <p>&copy; {currentYear} Ajiraunity. All rights reserved.</p>
           <div className="flex gap-8">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+            <Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
           </div>
         </div>
       </div>
@@ -330,7 +320,7 @@ const FooterPublic = () => {
 <button
   onClick={() => setShowModel(true)}
   className="
-    fixed bottom-6 right-6 z-40
+    fixed bottom-4 right-6 z-40
     flex items-center gap-2
     rounded-full bg-indigo-600 px-5 py-3
     text-sm font-semibold text-white
@@ -340,7 +330,9 @@ const FooterPublic = () => {
   "
 >
   <MessageSquare size={18} />
-  Feedback
+  <span className='hidden md:block'>
+     Feedback
+  </span>
 </button>
 
   

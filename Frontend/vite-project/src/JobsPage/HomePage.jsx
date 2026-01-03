@@ -12,6 +12,7 @@ import {
 
 import JobCard from "./JobComponent";
 import { Link } from "react-router";
+import FAQ from "./FAQNs";
 
 
 // Helper function to format salary nicely
@@ -346,10 +347,9 @@ export default function HomePage() {
         </div>
       </div>
     </section>
-  
-  
 
-
+    <FAQ/>
+  
     </div>
   );
 }
