@@ -348,7 +348,9 @@ export default function HomePage() {
       </div>
     </section>
 
-    <FAQ/>
+    <div id="faq">
+       <FAQ/>
+    </div>
   
     </div>
   );

@@ -1,7 +1,7 @@
 
 import { useContext, useState } from "react";
 import { Link , NavLink} from "react-router-dom";
-import { Menu, X, Loader, User2, LogOut } from "lucide-react";
+import { Menu, X, Loader, User2, LogOut, HelpCircle } from "lucide-react";
 
 import { AuthContext } from "../AxiosApi/AuthPages";
 
@@ -48,8 +48,18 @@ export default function Navigation() {
           {/* <NavLink to="/talents" className={navClass}>
             
           </NavLink> */}
-          <a href="#site-footer" className="font-bold hover:underline decoration-indigo-600 ">
-            Help?
+
+          <div className="flex items-center gap-2 cursor-pointer">
+               <a href="#site-footer" className="font-bold hover:underline decoration-indigo-600 ">
+                Help
+              </a>
+              <HelpCircle size={18} />
+          </div>
+
+         
+
+           <a href="#faq" className="font-bold hover:underline decoration-indigo-600 ">
+            FAQs
           </a>
         </div>
 
@@ -206,11 +216,22 @@ export default function Navigation() {
             </NavLink> */}
 
            
-            <a  onClick={()=> setOpen(false)}
-                 href="#site-footer" 
-                 className="font-bold hover:underline decoration-indigo-600 ">
-                Help?
+      
+
+           <div onClick={()=> setOpen(false)}
+            className="flex items-center gap-2 cursor-pointer">
+               <a href="#site-footer" className="font-bold hover:underline decoration-indigo-600 ">
+                Help
               </a>
+              <HelpCircle size={18} />
+          </div>
+
+         
+
+           <a onClick={()=> setOpen(false)}
+            href="#faq" className="font-bold hover:underline decoration-indigo-600 ">
+            FAQs
+          </a>
 
              
      </div>
